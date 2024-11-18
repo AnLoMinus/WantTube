@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WantTube - Music Downloader</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ffmpeg.js/0.10.0/ffmpeg.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/yt-download@1.0.0/dist/yt-download.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fab fa-youtube"></i>
+                <span>WantTube</span>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon" id="theme-toggle-btn"></i>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="hero-section">
+                <h1>Download YouTube Music</h1>
+                <p>Convert and download YouTube videos to MP3 in high quality</p>
+            </div>
+
+            <div class="download-card">
+                <div class="url-input-container">
+                    <i class="fas fa-link"></i>
+                    <input type="text" id="url-input" placeholder="Paste YouTube URL here">
+                    <button class="paste-btn" id="paste-btn">
+                        <i class="fas fa-paste"></i>
+                    </button>
+                </div>
+
+                <div class="video-preview" id="video-preview">
+                    <!-- Video preview will be inserted here via JavaScript -->
+                </div>
+
+                <div class="download-options">
+                    <div class="format-selector">
+                        <label><i class="fas fa-file-audio"></i> Format:</label>
+                        <select id="format-select">
+                            <option value="mp3">MP3 🎵</option>
+                            <option value="wav">WAV 🎼</option>
+                            <option value="m4a">M4A 🎧</option>
+                        </select>
+                    </div>
+
+                    <div class="quality-selector">
+                        <label><i class="fas fa-gem"></i> Quality:</label>
+                        <select id="quality-select">
+                            <option value="320">320 kbps ⭐⭐⭐</option>
+                            <option value="256">256 kbps ⭐⭐</option>
+                            <option value="128">128 kbps ⭐</option>
+                        </select>
+                    </div>
+
+                    <div class="trim-option">
+                        <label><i class="fas fa-cut"></i> Trim Audio:</label>
+                        <div class="trim-inputs">
+                            <input type="text" placeholder="Start Time" id="trim-start">
+                            <input type="text" placeholder="End Time" id="trim-end">
+                        </div>
+                    </div>
+                </div>
+
+                <button id="download-btn" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    <span>Download</span>
+                </button>
+
+                <div class="download-progress" id="download-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <p id="status" class="status-text">Ready to download</p>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Fast Download</h3>
+                        <p>Quick conversion and download process</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-music"></i>
+                        <h3>High Quality</h3>
+                        <p>Best audio quality available</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Safe & Free</h3>
+                        <p>100% secure and free to use</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-infinity"></i>
+                        <h3>No Limits</h3>
+                        <p>Download as many songs as you want</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advanced-features">
+                <h2><i class="fas fa-sliders-h"></i> Advanced Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-list"></i>
+                        <h3>Playlist Download 📑</h3>
+                        <p>Download entire playlists at once</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-tags"></i>
+                        <h3>Auto Tagging 🏷️</h3>
+                        <p>Automatic metadata and cover art</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-volume-up"></i>
+                        <h3>Volume Boost 🔊</h3>
+                        <p>Enhance audio levels</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-magic"></i>
+                        <h3>Audio Effects ✨</h3>
+                        <p>Add effects and equalizer</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Schedule Downloads ⏰</h3>
+                        <p>Plan your downloads for later</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-language"></i>
+                        <h3>Lyrics Sync 🎤</h3>
+                        <p>Auto-sync lyrics with audio</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Voice Removal 🤖</h3>
+                        <p>Extract instrumental versions</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-share-alt"></i>
+                        <h3>Direct Share 📤</h3>
+                        <p>Share to social media & cloud</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="batch-processing">
+                <h2><i class="fas fa-layer-group"></i> Batch Processing</h2>
+                <div class="batch-options">
+                    <div class="batch-input">
+                        <i class="fas fa-file-import"></i>
+                        <input type="file" id="batch-file" accept=".txt,.csv">
+                        <label for="batch-file">Upload URLs List 📋</label>
+                    </div>
+
+                    <div class="naming-template">
+                        <i class="fas fa-font"></i>
+                        <input type="text" placeholder="File naming template (e.g., {artist} - {title})"
+                            id="naming-template">
+                    </div>
+
+                    <div class="output-folder">
+                        <i class="fas fa-folder"></i>
+                        <select id="folder-structure">
+                            <option value="flat">Flat Structure 📁</option>
+                            <option value="artist">By Artist 🎨</option>
+                            <option value="album">By Album 💿</option>
+                            <option value="genre">By Genre 🎵</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="premium-features">
+                <h2><i class="fas fa-crown"></i> Premium Features 👑</h2>
+                <div class="features-grid">
+                    <div class="feature-card premium">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Sync ☁️</h3>
+                        <p>Auto-sync to cloud storage</p>
+                        <span class="premium-badge">PRO</span>
+                    </div>
+                    <div class="feature-card premium">
+                        <i class="fas fa-microphone-alt"></i>
+                        <h3>Voice Effects 🎙️</h3>
+                        <p>Professional audio effects</p>
+                        <span class="premium-badge">PRO</span>
+                    </div>
+                    <div class="feature-card premium">
+                        <i class="fas fa-code-branch"></i>
+                        <h3>API Access 🔌</h3>
+                        <p>Developer API integration</p>
+                        <span class="premium-badge">PRO</span>
+                    </div>
+                    <div class="feature-card premium">
+                        <i class="fas fa-terminal"></i>
+                        <h3>CLI Tool 💻</h3>
+                        <p>Command-line interface</p>
+                        <span class="premium-badge">PRO</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-tools">
+                <h2><i class="fas fa-tools"></i> Quick Tools 🛠️</h2>
+                <div class="tools-grid">
+                    <button class="tool-btn">
+                        <i class="fas fa-compress-alt"></i>
+                        Audio Merger
+                    </button>
+                    <button class="tool-btn">
+                        <i class="fas fa-cut"></i>
+                        Audio Splitter
+                    </button>
+                    <button class="tool-btn">
+                        <i class="fas fa-wave-square"></i>
+                        Format Converter
+                    </button>
+                    <button class="tool-btn">
+                        <i class="fas fa-tag"></i>
+                        Tag Editor
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>© 2024 WantTube. Made with <i class="fas fa-heart"></i></p>
+                <div class="credits">
+                    <p>Developed by
+                        <a href="https://github.com/anlominus" target="_blank" class="developer-link">
+                            <i class="fab fa-github"></i>
+                            Leon Yaakobov
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="scripts.js"></script>
+    <script src="mp3.js"></script>
+</body>
+
+</html>
