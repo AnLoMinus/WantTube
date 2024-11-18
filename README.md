@@ -1,5 +1,7 @@
 # 🎵 WantTube Music Downloader
 
+<img width="1680" alt="image" src="https://github.com/user-attachments/assets/9d7e0436-8554-4220-87af-e9c942a8532b">
+
 A powerful client-side YouTube music downloader with advanced features and a beautiful UI.
 
 ## ⚠️ Important Notice
